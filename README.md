@@ -1,3 +1,13 @@
-# laravel-vue-boilerplate
-Laravel Vue Boilerplate with user management, notification system, activity feed and more.
-### Playlist on Youtube:  [Laravel Vue Admin](https://www.youtube.com/playlist?list=PLzz9vf6075V25O3jAzvBrU-k4PscUWoLi)
+git clone http://github.com/mjvamorim/condo-vue
+
+cd condo-vue
+cp .env.example .env
+php artisan migrate:fresh
+php artisan db:seed
+
+composer install
+npm install
+npm run watch
+
+php artisan serve
+http://localhost:8000

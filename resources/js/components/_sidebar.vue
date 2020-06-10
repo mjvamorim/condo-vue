@@ -1,78 +1,66 @@
 <template>
-  <v-list dense>
-    <v-list-tile exact to="/admin">
-      <v-list-tile-action>
-        <v-icon>dashboard</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Dashboard</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
+    <v-list dense>
+        <v-list-item exact to="/admin">
+            <v-list-item-action>
+                <v-icon>dashboard</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+                <v-list-item-title>Dashboard</v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
 
-    <v-list-group no-action>
-      <v-list-tile slot="activator">
-        <v-list-tile-action>
-          <v-icon>account_circle</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>User Management</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+        <v-list-group no-action prepend-icon="mdi-map-marker-multiple">
+            <template v-slot:activator>
+                <v-list-item-title>Usuários</v-list-item-title>
+            </template>
+            <v-list-item to="/admin/users">
+                <v-list-item-action>
+                    <v-icon>mdi-bed-queen-outline</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                    <v-list-item-title>Users</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
 
-      <v-list-tile to="/admin/users">
-        <v-list-tile-action>
-          <v-icon>account_circle</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Users</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+            <v-list-item to="/admin/roles">
+                <v-list-item-action>
+                    <v-icon>account_circle</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                    <v-list-item-title>Roles</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
 
-      <v-list-tile to="/admin/roles">
-        <v-list-tile-action>
-          <v-icon>account_circle</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Roles</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+            <v-list-item to="/admin/permissions">
+                <v-list-item-action>
+                    <v-icon>account_circle</v-icon>
+                </v-list-item-action>
+                <v-list-item-content>
+                    <v-list-item-title>Permissions</v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+        </v-list-group>
 
-      <v-list-tile to="/admin/permissions">
-        <v-list-tile-action>
-          <v-icon>account_circle</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Permissions</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
-    </v-list-group>
+        <v-list-item to="/admin/activities">
+            <v-list-item-action>
+                <v-icon>settings</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+                <v-list-item-title>Activities</v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
 
-    <v-list-tile to="/admin/activities">
-      <v-list-tile-action>
-        <v-icon>settings</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Activities</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-
-    <v-list-tile to="/admin/settings">
-      <v-list-tile-action>
-        <v-icon>settings</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Settings</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-  </v-list>
+        <v-list-item to="/admin/settings">
+            <v-list-item-action>
+                <v-icon>settings</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+                <v-list-item-title>Settings</v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
+    </v-list>
 </template>
 
-
 <script>
-export default {
-    
-}
-
+export default {};
 </script>
-
-

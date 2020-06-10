@@ -1,24 +1,22 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
 
-window.Vue = require('vue');
+window.Vue = require("vue");
 
-import Vuetify from 'vuetify'
-import VueRouter from 'vue-router'
+import Vuetify from "vuetify";
+import VueRouter from "vue-router";
+import "@mdi/font/css/materialdesignicons.css";
+Vue.use(Vuetify);
+Vue.use(VueRouter);
 
-Vue.use(Vuetify)
-Vue.use(VueRouter)
+import "vuetify/dist/vuetify.min.css";
 
-import 'vuetify/dist/vuetify.min.css'
-
-
-import Auth from './auth'
+import Auth from "./auth";
 
 Vue.prototype.$auth = new Auth(window.user);
 
@@ -33,56 +31,64 @@ Vue.prototype.$auth = new Auth(window.user);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('admin', require('./components/Admin.vue').default);
+Vue.component(
+    "example-component",
+    require("./components/ExampleComponent.vue").default
+);
+Vue.component("admin", require("./components/Admin.vue").default);
 
-import Dashboard from './pages/Dashboard'
-import Settings from './pages/Settings'
-import Users from './pages/Users'
-import Roles from './pages/Roles'
-import Permissions from './pages/Permissions'
-import Activities from './pages/Activities'
+import Dashboard from "./pages/Dashboard";
+import Settings from "./pages/Settings";
+import Users from "./pages/Users";
+import Roles from "./pages/Roles";
+import Permissions from "./pages/Permissions";
+import Activities from "./pages/Activities";
+import Felipe from "./pages/Felipe";
 
 const routes = [
-  {
-      path: '/admin/',
-      component: Dashboard
-  },
-  {
-      path: '/admin/users',
-      component: Users
-  },
-  {
-      path: '/admin/roles',
-      component: Roles
-  },
-  {
-      path: '/admin/permissions',
-      component: Permissions
-  },
-  {
-      path: '/admin/settings',
-      component: Settings
-  },
-  {
-      path: '/admin/activities',
-      component: Activities
-  }
+    {
+        path: "/admin/",
+        component: Dashboard
+    },
+    {
+        path: "/admin/users",
+        component: Users
+    },
+    {
+        path: "/admin/roles",
+        component: Roles
+    },
+    {
+        path: "/admin/permissions",
+        component: Permissions
+    },
+    {
+        path: "/admin/settings",
+        component: Settings
+    },
+    {
+        path: "/admin/activities",
+        component: Activities
+    },
+    {
+        path: "/admin/felipe",
+        component: Felipe
+    }
 ];
 
 const router = new VueRouter({
-  mode: 'history',
-  routes
-})
-
+    mode: "history",
+    routes
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+const opts = {};
 const app = new Vue({
-    el: '#app',
-    router
+    el: "#app",
+    router,
+    vuetify: new Vuetify(opts)
 });
