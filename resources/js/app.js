@@ -43,6 +43,7 @@ import Users from "./pages/Users";
 import Roles from "./pages/Roles";
 import Permissions from "./pages/Permissions";
 import Activities from "./pages/Activities";
+import Proprietarios from "./pages/Proprietarios";
 import Felipe from "./pages/Felipe";
 
 const routes = [
@@ -73,6 +74,10 @@ const routes = [
     {
         path: "/admin/felipe",
         component: Felipe
+    },
+    {
+        path: "/admin/proprietarios",
+        component: Proprietarios
     }
 ];
 

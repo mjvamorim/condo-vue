@@ -15,19 +15,20 @@ class CreateProprietariosTable extends Migration
     {
         Schema::create('proprietarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome',100);
-            $table->string('email',100);
-            $table->string('celular',20);
-            $table->string('fixo',20);
-            $table->string('cpf',20);
-            $table->string('cep',20);
-            $table->string('rua',100);
-            $table->string('numero',50);
-            $table->string('complemento',50);
-            $table->string('bairro',30);
-            $table->string('cidade',30);
-            $table->string('uf',2);
-            $table->string('pais',30);
+            $table->string('nome',100)->nullable();
+            $table->string('email',100)->nullable();
+            $table->string('celular',20)->nullable();
+            $table->string('fixo',20)->nullable();
+            $table->string('cpf',20)->nullable();
+            $table->string('cep',9)->nullable();
+            $table->string('rua',60)->nullable();
+            $table->string('numero',30)->nullable();
+            $table->string('complemento',60)->nullable();
+            $table->string('bairro',30)->nullable();
+            $table->string('cidade',30)->nullable();
+            $table->string('uf',2)->nullable();
+            $table->string('pais',30)->nullable();
+            $table->index('nome');
             $table->timestamps();
         });
     }

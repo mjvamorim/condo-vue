@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Proprietario;
+use App\Models\Estado;
 use Illuminate\Http\Request;
-use App\Http\Resources\ProprietarioResource;
+use App\Http\Resources\EstadoResource;
 
-class ProprietarioController extends Controller
+class EstadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class ProprietarioController extends Controller
     public function index()
     {
 
-        $proprietarios = Proprietario::all();
+        $estados = Estado::all();
 
-        return ProprietarioResource::collection($proprietarios);
+        return EstadoResource::collection($estados);
     }
 
 
@@ -32,26 +32,26 @@ class ProprietarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:proprietarios'
+            'name' => 'required|unique:estados'
         ]);
 
         $input = $request->all();
         $input['creator_id'] = auth()->id();
 
-        $proprietario = Proprietario::create($input);
+        $estado = Estado::create($input);
 
-        return new ProprietarioResource($proprietario);
+        return new EstadoResource($estado);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Proprietario  $proprietario
+     * @param  \App\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function show(Proprietario $proprietario)
+    public function show(Estado $estado)
     {
-        return new ProprietarioResource($proprietario);
+        return new EstadoResource($estado);
     }
 
 
@@ -60,28 +60,28 @@ class ProprietarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Proprietario  $proprietario
+     * @param  \App\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proprietario $proprietario)
+    public function update(Request $request, Estado $estado)
     {
         $input = $request->all();
         $input['creator_id'] = auth()->id();
 
-        $proprietario->update($input);
+        $estado->update($input);
 
-        return new ProprietarioResource($proprietario);
+        return new EstadoResource($estado);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Proprietario  $proprietario
+     * @param  \App\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proprietario $proprietario)
+    public function destroy(Estado $estado)
     {
-        $proprietario->delete();
+        $estado->delete();
 
         return response(['message'=>'Deleted']);
     }
