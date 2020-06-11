@@ -3,7 +3,7 @@
         <v-app-bar-nav-icon @click.stop="comuteDrawer">
         </v-app-bar-nav-icon>
         <v-toolbar-title class="mr-12 align-center"
-            >Laravel Vue Admin</v-toolbar-title
+            >Gestão de Condomínios</v-toolbar-title
         >
         <v-spacer></v-spacer>
 

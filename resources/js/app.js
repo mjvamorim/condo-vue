@@ -78,10 +78,6 @@ const routes = [
     {
         path: "/admin/proprietarios",
         component: Proprietarios
-    },
-    {
-        path: "/admin/unidades",
-        component: Unidades
     }
 ];
 
