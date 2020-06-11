@@ -1,6 +1,6 @@
 <template>
     <v-app-bar app fixed clipped-left dense color="indigo">
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+        <v-app-bar-nav-icon @click.stop="comuteDrawer">
         </v-app-bar-nav-icon>
         <v-toolbar-title class="mr-12 align-center"
             >Laravel Vue Admin</v-toolbar-title
@@ -107,6 +107,9 @@ export default {
             axios.get("/mark-all-read/" + this.user.id).then(response => {
                 this.unreadNotifications = [];
             });
+        },
+        comuteDrawer() {
+            this.$emit('comute-drawer')
         }
     },
 

@@ -5,7 +5,7 @@
                 <sidebar></sidebar>
             </v-navigation-drawer>
 
-            <navbar :user="user"></navbar>
+            <navbar :user="user" @comute-drawer="comuteDrawer"></navbar>
 
             <v-content>
                 <v-container fluid fill-height>
@@ -32,6 +32,11 @@ export default {
     data: () => ({
         drawer: null
     }),
+    methods: {
+        comuteDrawer() {
+            this.drawer = !this.drawer
+        }
+    },
     props: ["user"]
 };
 </script>
