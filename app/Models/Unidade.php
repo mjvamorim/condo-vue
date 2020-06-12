@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Models;
-use Amorim\Tenant\Models\BaseModelTenant;
+// use Amorim\Tenant\Models\BaseModelTenant;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\Proprietario;
 
-class Unidade extends BaseModelTenant
+class Unidade extends Model
 {
     protected $fillable = [
         'id','descricao', 'adicional', 'tipo_adicional', 'proprietario_id', 'obs','envio_boleto'

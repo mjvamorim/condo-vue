@@ -40,31 +40,39 @@ http://localhost:8000
 Tarefas a realizar Felipe
 #########################
 
-1. Icones do sidebar
-2. Linkar a sidebar proprietarios a página do proprietarios (obs: a rota já existe)
+ok 1. Icones do sidebar
+ok 2. Linkar a sidebar proprietarios a página do proprietarios (obs: a rota já existe)
+
 3. Criar uma página para cada opçao do menu
    a) Criar o arquivo na pasta pages, copiar do Dashboard.vue
    b) Importar página
    c) Criar rota
    d) Alterar sidebar, link para rota
 4. Diminuir fonte do menu
+5. Paginas
+6. Criar Pages (parecida com proprietario trocando os campos)
+   a) Proprietário (ok)
+   b) Unidade
+   c) Taxa
+   d) Debito
+   e) Email
+   f) Acordo
 
 Tarefas Mauricio
 ################
 
 1. Testar solução multitenant
 2. Criar API
-   a) Acordo
-   b) Debito
-   c) Email
-   d) Estado
-   e) Proprietário (ok)
-   f) Taxa
-   g) Unidade
+   a) Proprietário (ok)
+   b) Unidade
+   c) Taxa
+   d) Debito
+   e) Email
+   f) Acordo
 3. Componentes do Vue
-   a) Mover routes.js
-   b) Máscara para campos
-   c) Cep
+   ok a) Mover routes.js
+   ok b) Máscara para campos
+   ok c) Cep
 4. Rotinas Financeiras
    a) Gerar Mensalidades
    b) Gerar Remessa

@@ -10,6 +10,7 @@ Route::apiResource('permissions', 'AdminApi\PermissionController');
 Route::apiResource('blogs', 'BlogController')->middleware('auth');
 
 Route::apiResource('proprietarios', 'ProprietarioController')->middleware('auth');
+Route::apiResource('unidades', 'UnidadeController')->middleware('auth');
 Route::apiResource('estados', 'EstadoController')->middleware('auth');
 Route::post('blogs/{blog}/update-image', 'BlogController@updateFeaturedImage')->middleware('auth');
 

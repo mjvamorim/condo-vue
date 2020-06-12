@@ -20,12 +20,14 @@
                                     <v-text-field
                                         v-model="editedItem.nome"
                                         label="Nome"
+                                        :rules="[rules.required]"
                                     ></v-text-field>
                                 </v-flex>
                                 <v-flex xs12>
                                     <v-text-field
                                         v-model="editedItem.email"
                                         label="Email"
+                                        :rules="[rules.email]"
                                     ></v-text-field>
                                 </v-flex>
 
@@ -33,6 +35,10 @@
                                     <v-text-field
                                         v-model="editedItem.celular"
                                         label="Celular"
+                                        v-mask="[
+                                            '(##)####-####',
+                                            '(##)#####-####'
+                                        ]"
                                     ></v-text-field>
                                 </v-flex>
 
@@ -40,13 +46,22 @@
                                     <v-text-field
                                         v-model="editedItem.fixo"
                                         label="Telefone Fixo"
+                                        v-mask="[
+                                            '(##)####-####',
+                                            '(##)#####-####'
+                                        ]"
                                     ></v-text-field>
                                 </v-flex>
 
                                 <v-flex xs12>
                                     <v-text-field
                                         v-model="editedItem.cpf"
-                                        label="CPF"
+                                        label="CPF/CNPJ"
+                                        :rules="[rules.required]"
+                                        v-mask="[
+                                            '###.###.###-##',
+                                            '##.###.###/####-##'
+                                        ]"
                                     ></v-text-field>
                                 </v-flex>
 
@@ -54,6 +69,9 @@
                                     <v-text-field
                                         v-model="editedItem.cep"
                                         label="Cep"
+                                        :rules="[rules.required]"
+                                        v-mask="['#####-###']"
+                                        @blur="buscar_cep"
                                     ></v-text-field>
                                 </v-flex>
 
@@ -61,34 +79,37 @@
                                     <v-text-field
                                         v-model="editedItem.rua"
                                         label="Rua"
+                                        :rules="[rules.required]"
                                     ></v-text-field>
                                 </v-flex>
 
                                 <v-flex xs12>
                                     <v-text-field
                                         v-model="editedItem.numero"
-                                        label="numero"
+                                        label="Número"
                                     ></v-text-field>
                                 </v-flex>
 
                                 <v-flex xs12>
                                     <v-text-field
                                         v-model="editedItem.complemento"
-                                        label="complemento"
+                                        label="Complemento"
                                     ></v-text-field>
                                 </v-flex>
 
                                 <v-flex xs12>
                                     <v-text-field
                                         v-model="editedItem.bairro"
-                                        label="bairro"
+                                        label="Bairro"
+                                        :rules="[rules.required]"
                                     ></v-text-field>
                                 </v-flex>
 
                                 <v-flex xs12>
                                     <v-text-field
                                         v-model="editedItem.cidade"
-                                        label="cidade"
+                                        label="Cidade"
+                                        :rules="[rules.required]"
                                     ></v-text-field>
                                 </v-flex>
 
@@ -98,8 +119,8 @@
                                         :items="allEstados"
                                         label="Estados"
                                         item-text="uf"
-                                        return-object
-                                        chips
+                                        return-values
+                                        :rules="[rules.required]"
                                     ></v-select>
                                 </v-flex>
 
@@ -141,6 +162,9 @@
 <script>
 export default {
     data: () => ({
+        cep: "",
+        endereco: {},
+        naoLocalizado: false,
         dialog: false,
         headers: [
             { text: "Nome", value: "nome" },
@@ -181,8 +205,16 @@ export default {
             bairro: " ",
             cidade: "",
             uf: "",
-            pais: "",
+            pais: "Brasil",
             created_at: ""
+        },
+        rules: {
+            required: value => !!value || "*Obrigatório",
+            counter: value => value.length <= 20 || "Max 20 characters",
+            email: value => {
+                const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return pattern.test(value) || "Invalid e-mail.";
+            }
         }
     }),
 
@@ -258,7 +290,40 @@ export default {
                     .then(response => console.log(response.data));
             }
             this.close();
+        },
+        buscar_cep() {
+            console.log("Buscar cep2");
+            var url =
+                "https://viacep.com.br/ws/" + this.editedItem.cep + "/json/";
+            if (/^[0-9]{5}-[0-9]{3}$/.test(this.editedItem.cep)) {
+                let axios_instance = axios.create();
+                delete axios_instance.defaults.headers.common["X-CSRF-TOKEN"];
+                axios_instance.get(url).then(response => {
+                    let endereco = response.data;
+                    if (!this.editedItem.rua) {
+                        this.editedItem.rua = endereco.logradouro;
+                        this.editedItem.bairro = endereco.bairro;
+                        this.editedItem.cidade = endereco.localidade;
+                        this.editedItem.uf = endereco.uf;
+                    }
+                });
+            }
         }
     }
 };
+
+// $.getJSON(
+//     ,
+//     function(endereco) {
+//         if (endereco.erro) {
+//             this.endereco = {};
+//             return;
+//         }
+// this.editedItem.rua = endereco.logradouro;
+// this.editedItem.bairro = endereco.bairro;
+// this.editedItem.cidade = endereco.localidade;
+// this.editedItem.uf = endereco.uf;
+// console.log(endereco);
+//     }
+// );
 </script>
