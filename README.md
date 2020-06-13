@@ -20,7 +20,7 @@ composer install
 
 cp .env.example .env
 
-mysql -u root
+mysql -u root -p
 
 > > SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');
 > > create database if not exists laravue;
