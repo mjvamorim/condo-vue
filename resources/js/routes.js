@@ -10,7 +10,7 @@ import Roles from "./pages/Roles";
 import Permissions from "./pages/Permissions";
 import Activities from "./pages/Activities";
 import Proprietarios from "./pages/Proprietarios";
-import Felipe from "./pages/Felipe";
+import Unidades from "./pages/Unidades";
 
 const routes = [
     {
@@ -38,12 +38,12 @@ const routes = [
         component: Activities
     },
     {
-        path: "/admin/felipe",
-        component: Felipe
-    },
-    {
         path: "/admin/proprietarios",
         component: Proprietarios
+    },
+    {
+        path: "/admin/unidades",
+        component: Unidades
     }
 ];
 

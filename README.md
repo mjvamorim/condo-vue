@@ -82,3 +82,9 @@ Tarefas Mauricio
    a) Manual do Usuário
    b) Log de Baixas
    c) Emails enviados
+
+
+            <template v-slot:item.proprietario_id="{ item }">
+                {{proprietarioNome(item.proprietario_id)}}
+
+            </template>
